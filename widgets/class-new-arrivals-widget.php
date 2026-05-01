@@ -51,8 +51,33 @@ class New_Arrivals_Widget extends Widget_Base {
                 'featured'     => esc_html__( 'Featured Products', 'vesara-elementor-addon' ),
                 'on_sale'      => esc_html__( 'On Sale', 'vesara-elementor-addon' ),
                 'best_selling' => esc_html__( 'Best Selling', 'vesara-elementor-addon' ),
+                'category'     => esc_html__( 'By Category', 'vesara-elementor-addon' ),
             ],
             'default' => 'latest',
+        ] );
+
+        $categories = [];
+        if ( class_exists( 'WooCommerce' ) ) {
+            $terms = get_terms( [
+                'taxonomy'   => 'product_cat',
+                'hide_empty' => false,
+            ] );
+            if ( ! is_wp_error( $terms ) && ! empty( $terms ) ) {
+                foreach ( $terms as $term ) {
+                    $categories[ $term->slug ] = $term->name;
+                }
+            }
+        }
+
+        $this->add_control( 'product_category', [
+            'label'       => esc_html__( 'Select Categories', 'vesara-elementor-addon' ),
+            'type'        => Controls_Manager::SELECT2,
+            'options'     => $categories,
+            'multiple'    => true,
+            'label_block' => true,
+            'condition'   => [
+                'product_source' => 'category',
+            ],
         ] );
 
         $this->add_control( 'product_count', [
@@ -159,6 +184,14 @@ class New_Arrivals_Widget extends Widget_Base {
                 $args['meta_key'] = 'total_sales';
                 $args['orderby']  = 'meta_value_num';
                 $args['order']    = 'DESC';
+            } elseif ( 'category' === $source && ! empty( $settings['product_category'] ) ) {
+                $args['tax_query'] = [
+                    [
+                        'taxonomy' => 'product_cat',
+                        'field'    => 'slug',
+                        'terms'    => $settings['product_category'],
+                    ],
+                ];
             }
             $query = new \WP_Query( $args );
             $products = $query->posts;
