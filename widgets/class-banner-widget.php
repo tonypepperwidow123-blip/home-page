@@ -62,6 +62,14 @@ class Banner_Widget extends Widget_Base {
             'default'       => [ 'url' => '#' ],
         ] );
 
+        $this->add_control( 'banner_link', [
+            'label'         => esc_html__( 'Overall Banner Link', 'vesara-elementor-addon' ),
+            'type'          => Controls_Manager::URL,
+            'placeholder'   => 'https://vesara.com/collection',
+            'show_external' => true,
+            'default'       => [ 'url' => '' ],
+        ] );
+
         $this->end_controls_section();
 
         // ── STYLE ──────────────────────────────────────────────────────────────
@@ -134,8 +142,17 @@ class Banner_Widget extends Widget_Base {
         $btn_url  = ! empty( $btn['url'] ) ? esc_url( $btn['url'] ) : '#';
         $target   = ! empty( $btn['is_external'] ) ? ' target="_blank"' : '';
         $nofollow = ! empty( $btn['nofollow'] ) ? ' rel="nofollow"' : ' rel="noopener"';
+        
+        $banner_link      = $settings['banner_link'] ?? [];
+        $banner_url       = ! empty( $banner_link['url'] ) ? esc_url( $banner_link['url'] ) : '';
+        $banner_target    = ! empty( $banner_link['is_external'] ) ? ' target="_blank"' : '';
+        $banner_nofollow  = ! empty( $banner_link['nofollow'] ) ? ' rel="nofollow"' : ' rel="noopener"';
         ?>
         <section class="vesara-banner">
+            <?php if ( $banner_url ) : ?>
+            <a href="<?php echo $banner_url; ?>" class="vesara-banner-overall-link" <?php echo $banner_target . $banner_nofollow; ?>></a>
+            <?php endif; ?>
+            
             <?php if ( $img_url ) : ?>
             <div class="vesara-banner-bg" style="background-image:url(<?php echo $img_url; ?>);"></div>
             <?php endif; ?>
@@ -164,8 +181,13 @@ class Banner_Widget extends Widget_Base {
         <#
         var imgUrl  = settings.banner_bg_image && settings.banner_bg_image.url ? settings.banner_bg_image.url : '';
         var btnUrl  = settings.banner_button_url && settings.banner_button_url.url ? settings.banner_button_url.url : '#';
+        var bannerUrl = settings.banner_link && settings.banner_link.url ? settings.banner_link.url : '';
         #>
         <section class="vesara-banner">
+            <# if ( bannerUrl ) { #>
+            <a href="{{ bannerUrl }}" class="vesara-banner-overall-link"></a>
+            <# } #>
+
             <# if ( imgUrl ) { #>
             <div class="vesara-banner-bg" style="background-image:url({{ imgUrl }});"></div>
             <# } #>

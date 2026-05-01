@@ -9,6 +9,13 @@
     background: var(--vesara-brown);
 }
 
+/* Overall Link */
+.vesara-banner-overall-link {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+}
+
 /* Background image layer */
 .vesara-banner-bg {
     position: absolute;
@@ -34,10 +41,11 @@
 /* Content */
 .vesara-banner-content {
     position: relative;
-    z-index: 3;
+    z-index: 5;
     max-width: 620px;
     padding: 80px 80px;
     animation: vesara-fade-up 0.8s ease both;
+    pointer-events: none;
 }
 
 @keyframes vesara-fade-up {
@@ -95,6 +103,7 @@
     background: transparent;
     transition: all var(--vesara-transition);
     border-radius: 2px;
+    pointer-events: auto;
 }
 .vesara-banner-button:hover {
     background: var(--vesara-gold);
