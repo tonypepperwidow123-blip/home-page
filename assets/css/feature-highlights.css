@@ -1,0 +1,80 @@
+/* ── VESARA Feature Highlights ── */
+.vesara-feature-highlights {
+    padding: 48px 40px;
+    background: var(--vesara-cream);
+    border-top: 2px solid var(--vesara-gold);
+    border-bottom: 2px solid var(--vesara-gold);
+}
+
+.vesara-features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.vesara-feature-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 24px 36px;
+    border-right: 1px solid rgba(201,169,97,0.3);
+    transition: background var(--vesara-transition);
+}
+.vesara-feature-item:last-child { border-right: none; }
+.vesara-feature-item:hover { background: rgba(201,169,97,0.06); }
+
+.vesara-feature-icon {
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    background: rgba(201,169,97,0.12);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--vesara-transition);
+}
+.vesara-feature-item:hover .vesara-feature-icon {
+    background: rgba(201,169,97,0.22);
+}
+.vesara-feature-icon i {
+    font-size: 22px;
+    color: var(--vesara-gold);
+}
+.vesara-feature-icon svg {
+    width: 26px;
+    height: 26px;
+    fill: var(--vesara-gold);
+}
+
+.vesara-feature-text {}
+.vesara-feature-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--vesara-brown);
+    margin: 0 0 4px;
+    line-height: 1.3;
+}
+.vesara-feature-description {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.8rem;
+    color: #7a6450;
+    margin: 0;
+    line-height: 1.5;
+}
+
+@media (max-width: 1024px) {
+    .vesara-features-grid { grid-template-columns: repeat(2, 1fr); }
+    .vesara-feature-item:nth-child(2) { border-right: none; }
+    .vesara-feature-item:nth-child(1),
+    .vesara-feature-item:nth-child(2) { border-bottom: 1px solid rgba(201,169,97,0.3); }
+}
+@media (max-width: 600px) {
+    .vesara-features-grid { grid-template-columns: 1fr; }
+    .vesara-feature-item { border-right: none; border-bottom: 1px solid rgba(201,169,97,0.3); padding: 20px 24px; }
+    .vesara-feature-item:last-child { border-bottom: none; }
+    .vesara-feature-highlights { padding: 32px 16px; }
+}

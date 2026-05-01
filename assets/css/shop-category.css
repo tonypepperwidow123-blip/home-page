@@ -1,0 +1,248 @@
+/* ── VESARA Shop by Category — Pixel-perfect reference match ── */
+
+/* ══════════════════════════════════════════
+   SECTION WRAPPER
+══════════════════════════════════════════ */
+.vesara-shop-category {
+    background: #f5ede0;
+    padding: 52px 40px 48px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ══════════════════════════════════════════
+   HEADER
+══════════════════════════════════════════ */
+.vesara-shop-category-header {
+    text-align: center;
+    margin-bottom: 36px;
+}
+
+/* Eyebrow text (small gold caps above heading) */
+.vesara-cat-eyebrow {
+    display: block;
+    font-family: 'Lato', 'Open Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: #C9A961;
+    margin-bottom: 10px;
+}
+
+/* Main heading — dark serif */
+.vesara-cat-heading {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.5rem, 2.4vw, 2rem);
+    font-weight: 600;
+    color: #1a1008;
+    margin: 0 0 14px;
+    line-height: 1.2;
+    letter-spacing: 0.04em;
+}
+
+/* Ornamental divider below heading */
+.vesara-cat-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.vesara-cat-divider-line {
+    display: block;
+    width: 56px;
+    height: 1px;
+    background: #C9A961;
+    opacity: 0.7;
+}
+
+.vesara-cat-divider-diamond {
+    width: 7px;
+    height: 7px;
+    background: #C9A961;
+    transform: rotate(45deg);
+    display: block;
+    flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════════
+   GRID — 6 columns, NO gap between cards
+   (border serves as the visual separator)
+══════════════════════════════════════════ */
+.vesara-category-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0;                   /* NO gap — borders touch */
+    max-width: 1300px;
+    margin: 0 auto;
+    align-items: stretch;
+}
+
+/* ══════════════════════════════════════════
+   CARD
+   Each card = gold border box (image fills top,
+   label sits in its own bordered bottom area)
+══════════════════════════════════════════ */
+.vesara-category-card {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    text-decoration: none;
+    cursor: pointer;
+    /* Collapsed left border on all but first so borders don't double */
+    border: 1px solid #C9A961;
+    margin-left: -1px;        /* collapse double border between cards */
+    background: transparent;
+    transition: background 0.22s ease, box-shadow 0.22s ease;
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* First card — full left border, no negative margin */
+.vesara-category-card:first-child {
+    margin-left: 0;
+}
+
+.vesara-category-card:hover {
+    background: rgba(201, 169, 97, 0.06);
+    z-index: 2;
+    box-shadow: 0 0 0 1.5px #C9A961;
+}
+
+/* ══════════════════════════════════════════
+   IMAGE SECTION (top portion of card)
+══════════════════════════════════════════ */
+.vesara-category-img-wrapper {
+    width: 100%;
+    /* No fixed aspect-ratio — adapts to whatever image is uploaded */
+    overflow: hidden;
+    display: block;            /* block so image fills width naturally */
+    background: #e8ddd0;       /* warm fallback bg for empty/loading images */
+    flex-shrink: 0;
+    box-sizing: border-box;
+    min-height: 80px;          /* safety floor so empty cards don't collapse */
+}
+
+.vesara-category-image {
+    width: 100%;               /* always fills card width */
+    height: auto;              /* natural height — adapts to image dimensions */
+    display: block;
+    transition: transform 0.45s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.vesara-category-card:hover .vesara-category-image {
+    transform: scale(1.05);
+}
+
+/* ══════════════════════════════════════════
+   LABEL SECTION (bottom portion of card)
+   Has its own top border to separate from image
+══════════════════════════════════════════ */
+.vesara-category-title {
+    display: block;
+    font-family: 'Lato', 'Open Sans', sans-serif;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #1a1008;
+    text-align: center;
+    padding: 12px 6px 11px;
+    line-height: 1.55;
+    border-top: 1px solid #C9A961;  /* divides image from label */
+    background: transparent;
+    transition: color 0.2s ease, background 0.2s ease;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.vesara-category-card:hover .vesara-category-title {
+    color: #C9A961;
+    background: rgba(201, 169, 97, 0.04);
+}
+
+/* ══════════════════════════════════════════
+   ACTIVE STATE — highlighted border
+══════════════════════════════════════════ */
+.vesara-category-card.is-active {
+    border-color: #8a6d3b;
+    z-index: 2;
+    box-shadow: 0 0 0 1px #8a6d3b;
+}
+
+.vesara-category-card.is-active .vesara-category-title {
+    border-top-color: #8a6d3b;
+    color: #8a6d3b;
+}
+
+/* No-image placeholder */
+.vesara-category-card--no-image .vesara-category-img-wrapper {
+    background: #ede4d6;
+}
+
+/* ══════════════════════════════════════════
+   VIEW ALL FOOTER LINK
+══════════════════════════════════════════ */
+.vesara-category-footer {
+    text-align: center;
+    margin-top: 36px;
+}
+
+.vesara-category-view-all {
+    font-family: 'Lato', 'Open Sans', sans-serif;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: #C9A961;
+    text-decoration: none;
+    transition: opacity 0.2s ease, letter-spacing 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.vesara-category-view-all::after {
+    content: '→';
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0;
+    transition: transform 0.2s ease;
+    display: inline-block;
+}
+
+.vesara-category-view-all:hover {
+    opacity: 0.75;
+}
+
+.vesara-category-view-all:hover::after {
+    transform: translateX(3px);
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+@media (max-width: 1100px) {
+    .vesara-category-grid { grid-template-columns: repeat(4, 1fr); }
+    .vesara-shop-category { padding: 44px 32px; }
+}
+
+@media (max-width: 768px) {
+    .vesara-category-grid {
+        grid-template-columns: repeat(3, 1fr);
+        /* Restore small gaps on mobile for readability */
+        gap: 0;
+        margin-left: 0;
+    }
+    .vesara-category-card { margin-left: -1px; }
+    .vesara-category-card:first-child { margin-left: 0; }
+    .vesara-shop-category { padding: 36px 16px; }
+}
+
+@media (max-width: 480px) {
+    .vesara-category-grid { grid-template-columns: repeat(2, 1fr); }
+    .vesara-cat-heading   { font-size: 1.5rem; }
+    .vesara-category-title { font-size: 8.5px; padding: 10px 4px; letter-spacing: 0.15em; }
+}

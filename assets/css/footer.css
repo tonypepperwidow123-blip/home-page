@@ -1,0 +1,299 @@
+/* ── VESARA Footer Widget — Pixel-matched to design ── */
+
+.vesara-footer {
+    background: #3D2817;
+    color: #F5F1E8;
+    font-family: 'Lato', 'Open Sans', Arial, sans-serif;
+    width: 100%;
+}
+
+/* ═══════════════════════════════════════
+   CTA BAR — Top section
+═══════════════════════════════════════ */
+.vesara-footer-cta-bar {
+    background: #5C3D1E;
+    border-bottom: 1px solid rgba(201,169,97,0.25);
+    padding: 20px 60px;
+}
+
+.vesara-footer-cta-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.vesara-cta-icon-wrap {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border: 1.5px solid #C9A961;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #C9A961;
+    font-size: 18px;
+}
+
+.vesara-cta-label {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(0.95rem, 2vw, 1.2rem);
+    font-weight: 600;
+    color: #F5F1E8;
+    letter-spacing: 0.04em;
+    margin: 0;
+    flex: 1;
+    text-align: center;
+}
+
+.vesara-cta-btn {
+    flex-shrink: 0;
+    display: inline-block;
+    background: #C9A961;
+    color: #3D2817;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    white-space: nowrap;
+}
+.vesara-cta-btn:hover {
+    background: #dfc078;
+    transform: translateY(-1px);
+}
+
+/* ═══════════════════════════════════════
+   MAIN FOOTER BODY
+═══════════════════════════════════════ */
+.vesara-footer-body {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 48px;
+    padding: 44px 60px 40px;
+    max-width: 1300px;
+    margin: 0 auto;
+    border-bottom: 1px solid rgba(201,169,97,0.18);
+}
+
+/* ── Left: Logo + Tagline + Social ── */
+.vesara-footer-brand {}
+
+.vesara-footer-logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.vesara-footer-logo-img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    border-radius: 50%;
+    background: rgba(201,169,97,0.15);
+    padding: 4px;
+    flex-shrink: 0;
+}
+
+.vesara-footer-logo-icon {
+    width: 36px;
+    height: 36px;
+    background: rgba(201,169,97,0.12);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #C9A961;
+    font-size: 18px;
+}
+
+.vesara-footer-logo-name {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: #F5F1E8;
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 1;
+}
+
+.vesara-footer-tagline {
+    font-size: 0.78rem;
+    color: rgba(245,241,232,0.52);
+    line-height: 1.5;
+    margin: 0 0 20px;
+    font-style: italic;
+}
+
+/* Social row */
+.vesara-footer-socials {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.vesara-footer-social-link {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,169,97,0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: rgba(245,241,232,0.65);
+    font-size: 13px;
+    transition: all 0.3s ease;
+}
+.vesara-footer-social-link:hover {
+    border-color: #C9A961;
+    color: #C9A961;
+    background: rgba(201,169,97,0.1);
+}
+
+/* ── Right: 4-column link grid ── */
+.vesara-footer-cols {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.vesara-footer-col {}
+
+.vesara-col-title {
+    font-family: 'Lato', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #C9A961;
+    margin: 0 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(201,169,97,0.2);
+}
+
+.vesara-col-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.vesara-col-links li {
+    margin-bottom: 8px;
+}
+
+.vesara-footer-link {
+    font-size: 0.8rem;
+    color: rgba(245,241,232,0.65);
+    text-decoration: none;
+    line-height: 1.5;
+    transition: color 0.25s ease;
+    display: block;
+}
+.vesara-footer-link:hover { color: #C9A961; }
+
+/* Contact column special items */
+.vesara-contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 9px;
+}
+.vesara-contact-icon {
+    color: #C9A961;
+    font-size: 13px;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+.vesara-contact-text {
+    font-size: 0.8rem;
+    color: rgba(245,241,232,0.65);
+    line-height: 1.4;
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+a.vesara-contact-text:hover { color: #C9A961; }
+
+/* ═══════════════════════════════════════
+   COPYRIGHT BAR
+═══════════════════════════════════════ */
+.vesara-footer-copyright {
+    padding: 14px 60px;
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.vesara-copyright-text {
+    font-size: 0.75rem;
+    color: rgba(245,241,232,0.42);
+    margin: 0;
+}
+
+.vesara-policy-links {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.vesara-policy-links li {
+    display: flex;
+    align-items: center;
+}
+.vesara-policy-links li + li::before {
+    content: '|';
+    color: rgba(245,241,232,0.25);
+    padding: 0 12px;
+    font-size: 0.7rem;
+}
+.vesara-policy-links a {
+    font-size: 0.75rem;
+    color: rgba(245,241,232,0.45);
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+.vesara-policy-links a:hover { color: #C9A961; }
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════ */
+@media (max-width: 1100px) {
+    .vesara-footer-body { grid-template-columns: 200px 1fr; padding: 40px 40px; }
+    .vesara-footer-cols { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .vesara-footer-cta-bar { padding: 18px 40px; }
+    .vesara-footer-copyright { padding: 14px 40px; }
+}
+
+@media (max-width: 768px) {
+    .vesara-footer-cta-bar { padding: 18px 24px; }
+    .vesara-footer-cta-inner { flex-wrap: wrap; text-align: center; }
+    .vesara-cta-label { text-align: center; }
+    .vesara-footer-body { grid-template-columns: 1fr; padding: 32px 24px 28px; gap: 28px; }
+    .vesara-footer-brand { text-align: center; }
+    .vesara-footer-logo-wrap { justify-content: center; }
+    .vesara-footer-socials { justify-content: center; }
+    .vesara-footer-cols { grid-template-columns: repeat(2, 1fr); }
+    .vesara-footer-copyright { flex-direction: column; text-align: center; padding: 12px 24px; }
+}
+
+@media (max-width: 480px) {
+    .vesara-footer-cols { grid-template-columns: 1fr; }
+    .vesara-footer-cta-inner { gap: 12px; }
+}
