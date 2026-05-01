@@ -301,44 +301,5 @@ class New_Arrivals_Widget extends Widget_Base {
         <?php
     }
 
-    protected function content_template(): void { ?>
-        <#
-        var source = settings.product_source || 'latest';
-        #>
-        <div class="vesara-new-arrivals-wrap">
-            <# if ( settings.na_heading ) { #>
-            <div class="vesara-new-arrivals-header">
-                <# if ( settings.na_eyebrow ) { #><span class="vesara-section-eyebrow">{{ settings.na_eyebrow }}</span><# } #>
-                <h2 class="vesara-section-title">{{ settings.na_heading }}</h2>
-            </div>
-            <# } #>
-            <div class="vesara-products-grid">
-                <# for( var i=0; i<4; i++ ) { #>
-                <div class="vesara-product-card">
-                    <div class="vesara-product-image-wrapper" style="min-height:220px;">
-                        <span class="vesara-product-badge">New</span>
-                        <button class="vesara-wishlist-btn nmm-wishlist-btn" aria-label="Wishlist">
-                            <svg class="vesara-heart-outline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                            </svg>
-                            <svg class="vesara-heart-solid" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="vesara-product-info">
-                        <h3 class="vesara-product-title">Product Name</h3>
-                        <div class="vesara-product-price">&#8377;18,500.00</div>
-                        <a class="vesara-product-button">ADD TO CART</a>
-                    </div>
-                </div>
-                <# } #>
-            </div>
-            <# if ( settings.na_view_all_text ) { #>
-            <div class="vesara-products-footer">
-                <a class="vesara-products-view-all" href="{{ settings.na_view_all_url ? settings.na_view_all_url.url : '#' }}">{{ settings.na_view_all_text }} &rarr;</a>
-            </div>
-            <# } #>
-        </div>
-    <?php }
+    // Removed content_template() to force Elementor to use server-side rendering for dynamic WooCommerce data.
 }
