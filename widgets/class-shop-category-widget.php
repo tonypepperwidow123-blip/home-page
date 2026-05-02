@@ -119,7 +119,7 @@ class Shop_Category_Widget extends Widget_Base {
         ] );
 
         $this->add_responsive_control( 'grid_gap', [
-            'label'          => __( 'Category Spacing', 'vesara-elementor-addon' ),
+            'label'          => __( 'Spacing Between Categories', 'vesara-elementor-addon' ),
             'type'           => Controls_Manager::SLIDER,
             'size_units'     => [ 'px', '%', 'em', 'rem', 'vw', 'custom' ],
             'default'        => [
