@@ -15,13 +15,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
-    opacity: 0.8;
+    gap: 12px;
+    margin-top: 15px;
+    opacity: 0.9;
+}
+.vesara-floral-divider::before,
+.vesara-floral-divider::after {
+    content: '';
+    width: 60px;
+    height: 1px;
+    background-color: #c9a96e;
+    opacity: 0.5;
 }
 .vesara-floral-divider svg {
-    width: 140px;
-    height: 18px;
-    color: #c9a96e; /* Using color allows currentColor in SVG to adopt this */
+    width: 40px !important;
+    height: 14px !important;
 }
 
 /* ── GRID ── */

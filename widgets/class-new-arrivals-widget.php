@@ -249,12 +249,9 @@ class New_Arrivals_Widget extends Widget_Base {
                 
                 <?php if ( 'yes' === $settings['show_floral_divider'] ) : ?>
                 <div class="vesara-floral-divider">
-                    <svg viewBox="0 0 100 30" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M50 0 L55 15 L50 30 L45 15 Z" fill="currentColor"/>
-                        <path d="M40 15 C 30 5, 10 5, 0 15 C 10 25, 30 25, 40 15" fill="none" stroke="currentColor" stroke-width="2"/>
-                        <path d="M60 15 C 70 5, 90 5, 100 15 C 90 25, 70 25, 60 15" fill="none" stroke="currentColor" stroke-width="2"/>
-                        <circle cx="5" cy="15" r="2" fill="currentColor"/>
-                        <circle cx="95" cy="15" r="2" fill="currentColor"/>
+                    <svg width="40" height="14" viewBox="0 0 40 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 1 C 18 7, 15 13, 10 13 C 5 13, 5 7, 10 7 C 15 7, 18 1, 20 1 C 22 7, 25 13, 30 13 C 35 13, 35 7, 30 7 C 25 7, 22 1, 20 1 Z" fill="#c9a96e"/>
+                        <circle cx="20" cy="7" r="2" fill="#c9a96e"/>
                     </svg>
                 </div>
                 <?php endif; ?>
