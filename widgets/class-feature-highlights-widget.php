@@ -27,11 +27,52 @@ class Feature_Highlights_Widget extends Widget_Base {
 
         $repeater = new Repeater();
 
+        $repeater->add_control(
+            'icon_type',
+            [
+                'label' => esc_html__( 'Icon Type', 'vesara-elementor-addon' ),
+                'type' => Controls_Manager::CHOOSE,
+                'label_block' => false,
+                'options' => [
+                    'icon' => [
+                        'title' => esc_html__( 'Icon', 'vesara-elementor-addon' ),
+                        'icon' => 'eicon-star',
+                    ],
+                    'image' => [
+                        'title' => esc_html__( 'Image', 'vesara-elementor-addon' ),
+                        'icon' => 'eicon-image-bold',
+                    ],
+                ],
+                'default' => 'icon',
+                'toggle' => false,
+            ]
+        );
+
         $repeater->add_control( 'feature_icon', [
             'label'   => esc_html__( 'Icon', 'vesara-elementor-addon' ),
             'type'    => Controls_Manager::ICONS,
             'default' => [ 'value' => 'fas fa-check-circle', 'library' => 'fa-solid' ],
+            'condition' => [
+                'icon_type' => 'icon',
+            ],
         ] );
+
+        $repeater->add_control(
+            'feature_image',
+            [
+                'label' => esc_html__( 'Choose Image', 'vesara-elementor-addon' ),
+                'type' => Controls_Manager::MEDIA,
+                'dynamic' => [
+                    'active' => true,
+                ],
+                'default' => [
+                    'url' => '',
+                ],
+                'condition' => [
+                    'icon_type' => 'image',
+                ],
+            ]
+        );
 
         $repeater->add_control( 'feature_title', [
             'label'       => esc_html__( 'Title', 'vesara-elementor-addon' ),
@@ -52,10 +93,10 @@ class Feature_Highlights_Widget extends Widget_Base {
             'type'    => Controls_Manager::REPEATER,
             'fields'  => $repeater->get_controls(),
             'default' => [
-                [ 'feature_title' => 'Pure Silk',             'feature_description' => 'Silk Mark Certified',            'feature_icon' => [ 'value' => 'fas fa-award', 'library' => 'fa-solid' ] ],
-                [ 'feature_title' => 'Authentic Handloom',    'feature_description' => 'Traditional Craftsmanship',       'feature_icon' => [ 'value' => 'fas fa-hands', 'library' => 'fa-solid' ] ],
-                [ 'feature_title' => 'Worldwide Shipping',    'feature_description' => 'Delivered to Your Door',          'feature_icon' => [ 'value' => 'fas fa-globe', 'library' => 'fa-solid' ] ],
-                [ 'feature_title' => 'Secure Payments',       'feature_description' => '100% Safe Transactions',         'feature_icon' => [ 'value' => 'fas fa-lock', 'library' => 'fa-solid' ] ],
+                [ 'icon_type' => 'icon', 'feature_title' => 'Pure Silk',             'feature_description' => 'Silk Mark Certified',            'feature_icon' => [ 'value' => 'fas fa-award', 'library' => 'fa-solid' ] ],
+                [ 'icon_type' => 'icon', 'feature_title' => 'Authentic Handloom',    'feature_description' => 'Traditional Craftsmanship',       'feature_icon' => [ 'value' => 'fas fa-hands', 'library' => 'fa-solid' ] ],
+                [ 'icon_type' => 'icon', 'feature_title' => 'Worldwide Shipping',    'feature_description' => 'Delivered to Your Door',          'feature_icon' => [ 'value' => 'fas fa-globe', 'library' => 'fa-solid' ] ],
+                [ 'icon_type' => 'icon', 'feature_title' => 'Secure Payments',       'feature_description' => '100% Safe Transactions',         'feature_icon' => [ 'value' => 'fas fa-lock', 'library' => 'fa-solid' ] ],
             ],
             'title_field' => '{{{ feature_title }}}',
         ] );
@@ -85,7 +126,7 @@ class Feature_Highlights_Widget extends Widget_Base {
             'size_units' => [ 'px' ],
             'range'      => [ 'px' => [ 'min' => 16, 'max' => 80 ] ],
             'default'    => [ 'size' => 24 ],
-            'selectors'  => [ '{{WRAPPER}} .vesara-feature-icon i' => 'font-size: {{SIZE}}px;', '{{WRAPPER}} .vesara-feature-icon svg' => 'width: {{SIZE}}px; height: {{SIZE}}px;' ],
+            'selectors'  => [ '{{WRAPPER}} .vesara-feature-icon i' => 'font-size: {{SIZE}}px;', '{{WRAPPER}} .vesara-feature-icon svg' => 'width: {{SIZE}}px; height: {{SIZE}}px;', '{{WRAPPER}} .vesara-feature-icon img' => 'width: {{SIZE}}px; height: auto;' ],
         ] );
 
         $this->add_control( 'icon_color', [
@@ -139,7 +180,17 @@ class Feature_Highlights_Widget extends Widget_Base {
             <div class="vesara-features-grid">
                 <?php foreach ( $features as $feat ) : ?>
                 <div class="vesara-feature-item">
-                    <?php if ( ! empty( $feat['feature_icon']['value'] ) ) : ?>
+                    <?php 
+                    $icon_type = $feat['icon_type'] ?? 'icon';
+                    if ( 'image' === $icon_type && ! empty( $feat['feature_image']['url'] ) ) : ?>
+                    <div class="vesara-feature-icon vesara-feature-image">
+                        <?php if ( ! empty( $feat['feature_image']['id'] ) ) : ?>
+                            <?php echo wp_get_attachment_image( $feat['feature_image']['id'], 'full' ); ?>
+                        <?php else: ?>
+                            <img src="<?php echo esc_url( $feat['feature_image']['url'] ); ?>" alt="<?php echo esc_attr( $feat['feature_title'] ?? '' ); ?>" />
+                        <?php endif; ?>
+                    </div>
+                    <?php elseif ( 'icon' === $icon_type && ! empty( $feat['feature_icon']['value'] ) ) : ?>
                     <div class="vesara-feature-icon">
                         <?php Icons_Manager::render_icon( $feat['feature_icon'], [ 'aria-hidden' => 'true' ] ); ?>
                     </div>
@@ -167,11 +218,20 @@ class Feature_Highlights_Widget extends Widget_Base {
             <div class="vesara-features-grid">
                 <# _.each( features, function( feat ) { #>
                 <div class="vesara-feature-item">
+                    <# var iconType = feat.icon_type ? feat.icon_type : 'icon'; #>
+                    <# if ( 'image' === iconType && feat.feature_image && feat.feature_image.url ) { #>
+                    <div class="vesara-feature-icon vesara-feature-image">
+                        <img src="{{ feat.feature_image.url }}" alt="{{ feat.feature_title }}">
+                    </div>
+                    <# } else if ( 'icon' === iconType && feat.feature_icon && feat.feature_icon.value ) { #>
                     <div class="vesara-feature-icon">
-                        <# if ( feat.feature_icon && feat.feature_icon.value ) { #>
-                        <i class="{{ feat.feature_icon.value }}" aria-hidden="true"></i>
+                        <# if ( feat.feature_icon.library && feat.feature_icon.library === 'svg' ) { #>
+                            <img src="{{ feat.feature_icon.value.url }}" alt="{{ feat.feature_title }}">
+                        <# } else { #>
+                            <i class="{{ feat.feature_icon.value }}" aria-hidden="true"></i>
                         <# } #>
                     </div>
+                    <# } #>
                     <div class="vesara-feature-text">
                         <h4 class="vesara-feature-title">{{ feat.feature_title }}</h4>
                         <p class="vesara-feature-description">{{ feat.feature_description }}</p>
