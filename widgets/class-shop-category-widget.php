@@ -118,6 +118,25 @@ class Shop_Category_Widget extends Widget_Base {
             'selectors'      => [ '{{WRAPPER}} .vesara-category-grid' => 'grid-template-columns: repeat({{VALUE}}, 1fr);' ],
         ] );
 
+        $this->add_responsive_control( 'grid_gap', [
+            'label'          => __( 'Category Spacing', 'vesara-elementor-addon' ),
+            'type'           => Controls_Manager::SLIDER,
+            'size_units'     => [ 'px', '%', 'em', 'rem', 'vw', 'custom' ],
+            'default'        => [
+                'size' => 15,
+                'unit' => 'px',
+            ],
+            'range'          => [
+                'px' => [
+                    'min' => 0,
+                    'max' => 100,
+                ],
+            ],
+            'selectors'      => [
+                '{{WRAPPER}} .vesara-category-grid' => '--category-gap: {{SIZE}}{{UNIT}};',
+            ],
+        ] );
+
         $this->add_control( 'eyebrow_color', [
             'label'     => __( 'Eyebrow Color', 'vesara-elementor-addon' ),
             'type'      => Controls_Manager::COLOR,

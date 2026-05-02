@@ -74,7 +74,7 @@
 .vesara-category-grid {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    gap: 0;                   /* NO gap — borders touch */
+    gap: var(--category-gap, 15px);
     max-width: 1300px;
     margin: 0 auto;
     align-items: stretch;
@@ -91,18 +91,11 @@
     align-items: stretch;
     text-decoration: none;
     cursor: pointer;
-    /* Collapsed left border on all but first so borders don't double */
     border: 1px solid #C9A961;
-    margin-left: -1px;        /* collapse double border between cards */
     background: transparent;
     transition: background 0.22s ease, box-shadow 0.22s ease;
     box-sizing: border-box;
     position: relative;
-}
-
-/* First card — full left border, no negative margin */
-.vesara-category-card:first-child {
-    margin-left: 0;
 }
 
 .vesara-category-card:hover {
@@ -232,19 +225,12 @@
 @media (max-width: 1024px) {
     .vesara-category-grid {
         grid-template-columns: repeat(3, 1fr);
-        /* Restore small gaps on mobile for readability */
-        gap: 0;
-        margin-left: 0;
     }
-    .vesara-category-card { margin-left: -1px; }
-    .vesara-category-card:nth-child(3n+1) { margin-left: 0; }
     .vesara-shop-category { padding: 36px 24px; }
 }
 
 @media (max-width: 767px) {
     .vesara-category-grid { grid-template-columns: repeat(2, 1fr); }
-    .vesara-category-card:nth-child(3n+1) { margin-left: -1px; }
-    .vesara-category-card:nth-child(2n+1) { margin-left: 0; }
     .vesara-cat-heading   { font-size: 1.5rem; }
     .vesara-category-title { font-size: 9.5px; padding: 14px 6px; letter-spacing: 0.15em; }
     .vesara-shop-category { padding: 36px 16px; }
