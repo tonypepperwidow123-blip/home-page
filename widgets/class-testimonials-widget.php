@@ -311,11 +311,13 @@ class Testimonials_Widget extends Widget_Base {
                 </div>
                 <div class="vesara-carousel-nav">
                     <# if ( settings.show_arrows === 'yes' ) { #><button class="vesara-carousel-prev">&#8592;</button><# } #>
+                    <# if ( settings.show_dots === 'yes' ) { #>
                     <div class="vesara-carousel-dots">
                         <# _.each( testimonials, function( t, i ) { #>
                         <button class="vesara-carousel-dot<# if(i===0){#> active<#}#>" data-slide="{{ i }}"></button>
                         <# } ); #>
                     </div>
+                    <# } #>
                     <# if ( settings.show_arrows === 'yes' ) { #><button class="vesara-carousel-next">&#8594;</button><# } #>
                 </div>
             </div>
