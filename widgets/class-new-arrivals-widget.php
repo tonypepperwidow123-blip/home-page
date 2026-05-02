@@ -154,6 +154,39 @@ class New_Arrivals_Widget extends Widget_Base {
             'selectors' => [ '{{WRAPPER}} .vesara-product-button:hover' => 'background: {{VALUE}};' ],
         ] );
 
+        $this->add_control( 'wishlist_icon_heading', [
+            'label' => esc_html__( 'Wishlist Icon', 'vesara-elementor-addon' ),
+            'type' => Controls_Manager::HEADING,
+            'separator' => 'before',
+        ] );
+
+        $this->add_control( 'wishlist_icon_color', [
+            'label'     => esc_html__( 'Normal Color', 'vesara-elementor-addon' ),
+            'type'      => Controls_Manager::COLOR,
+            'default'   => '#ffffff',
+            'selectors' => [
+                '{{WRAPPER}} .vesara-wishlist-btn .vesara-heart-outline' => 'stroke: {{VALUE}} !important;',
+            ],
+        ] );
+
+        $this->add_control( 'wishlist_icon_hover_color', [
+            'label'     => esc_html__( 'Hover Color', 'vesara-elementor-addon' ),
+            'type'      => Controls_Manager::COLOR,
+            'default'   => '#C9A961',
+            'selectors' => [
+                '{{WRAPPER}} .vesara-wishlist-btn:hover .vesara-heart-outline' => 'stroke: {{VALUE}} !important;',
+            ],
+        ] );
+
+        $this->add_control( 'wishlist_icon_active_color', [
+            'label'     => esc_html__( 'Active/Saved Color', 'vesara-elementor-addon' ),
+            'type'      => Controls_Manager::COLOR,
+            'default'   => '#C9A961',
+            'selectors' => [
+                '{{WRAPPER}} .vesara-wishlist-btn.active .vesara-heart-solid, {{WRAPPER}} .vesara-wishlist-btn.in-wishlist .vesara-heart-solid' => 'fill: {{VALUE}} !important;',
+            ],
+        ] );
+
         $this->end_controls_section();
     }
 
