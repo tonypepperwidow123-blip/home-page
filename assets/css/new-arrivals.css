@@ -114,12 +114,15 @@
 .vesara-wishlist-btn .vesara-heart-outline {
     opacity: 1;
     transform: scale(1);
-    stroke: #888888;
+    stroke: #ffffff;
+    stroke-width: 2px;
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.4));
 }
 .vesara-wishlist-btn .vesara-heart-solid {
     opacity: 0;
     transform: scale(0.8);
     fill: #C9A961;
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.2));
 }
 
 /* Active State */
