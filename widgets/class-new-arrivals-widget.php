@@ -36,6 +36,13 @@ class New_Arrivals_Widget extends Widget_Base {
             'default' => esc_html__( 'New Arrivals', 'vesara-elementor-addon' ),
         ] );
 
+        $this->add_control( 'show_floral_divider', [
+            'label'        => esc_html__( 'Show Floral Divider', 'vesara-elementor-addon' ),
+            'type'         => Controls_Manager::SWITCHER,
+            'return_value' => 'yes',
+            'default'      => 'yes',
+        ] );
+
         $this->end_controls_section();
 
         $this->start_controls_section( 'na_query_section', [
@@ -239,6 +246,18 @@ class New_Arrivals_Widget extends Widget_Base {
                 <span class="vesara-section-eyebrow"><?php echo esc_html( $settings['na_eyebrow'] ); ?></span>
                 <?php endif; ?>
                 <h2 class="vesara-section-title"><?php echo esc_html( $settings['na_heading'] ); ?></h2>
+                
+                <?php if ( 'yes' === $settings['show_floral_divider'] ) : ?>
+                <div class="vesara-floral-divider">
+                    <svg viewBox="0 0 100 30" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50 0 L55 15 L50 30 L45 15 Z" fill="currentColor"/>
+                        <path d="M40 15 C 30 5, 10 5, 0 15 C 10 25, 30 25, 40 15" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <path d="M60 15 C 70 5, 90 5, 100 15 C 90 25, 70 25, 60 15" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <circle cx="5" cy="15" r="2" fill="currentColor"/>
+                        <circle cx="95" cy="15" r="2" fill="currentColor"/>
+                    </svg>
+                </div>
+                <?php endif; ?>
             </div>
             <?php endif; ?>
 

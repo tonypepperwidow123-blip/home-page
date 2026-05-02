@@ -10,6 +10,20 @@
     margin-bottom: 48px;
 }
 
+/* Floral Divider */
+.vesara-floral-divider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    opacity: 0.8;
+}
+.vesara-floral-divider svg {
+    width: 140px;
+    height: 18px;
+    color: #c9a96e; /* Using color allows currentColor in SVG to adopt this */
+}
+
 /* ── GRID ── */
 .vesara-products-grid {
     display: grid;
