@@ -133,7 +133,8 @@ class Shop_Category_Widget extends Widget_Base {
                 ],
             ],
             'selectors'      => [
-                '{{WRAPPER}} .vesara-category-grid' => '--category-gap: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .vesara-category-grid' => 'gap: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .vesara-category-card' => 'margin: 0 !important;',
             ],
         ] );
 
