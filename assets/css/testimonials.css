@@ -115,16 +115,20 @@
     color: var(--vesara-brown);
 }
 
-.vesara-carousel-dots { display: flex; gap: 8px; }
+.vesara-carousel-dots { display: flex; align-items: center; gap: 10px; }
 .vesara-carousel-dot {
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
+    min-width: 10px;
+    min-height: 10px;
     border-radius: 50%;
     background: rgba(201,169,97,0.35);
     border: none;
     cursor: pointer;
     transition: all var(--vesara-transition);
     padding: 0;
+    margin: 0;
+    flex-shrink: 0;
 }
 .vesara-carousel-dot.active { background: var(--vesara-gold); transform: scale(1.3); }
 
