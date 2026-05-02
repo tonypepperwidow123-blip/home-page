@@ -206,7 +206,7 @@
     cursor: pointer;
     transition: background 0.25s ease, color 0.25s ease;
     border-radius: 3px;
-    margin-top: 6px;
+    margin-top: auto; /* Pushes button to bottom for symmetrical alignment */
     box-sizing: border-box;
 }
 .vesara-product-button:hover {
