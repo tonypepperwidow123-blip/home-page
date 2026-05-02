@@ -249,9 +249,19 @@ class New_Arrivals_Widget extends Widget_Base {
                 
                 <?php if ( 'yes' === $settings['show_floral_divider'] ) : ?>
                 <div class="vesara-floral-divider">
-                    <svg width="40" height="14" viewBox="0 0 40 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20 1 C 18 7, 15 13, 10 13 C 5 13, 5 7, 10 7 C 15 7, 18 1, 20 1 C 22 7, 25 13, 30 13 C 35 13, 35 7, 30 7 C 25 7, 22 1, 20 1 Z" fill="#c9a96e"/>
-                        <circle cx="20" cy="7" r="2" fill="#c9a96e"/>
+                    <svg width="240" height="24" viewBox="0 0 240 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Left Line -->
+                        <line x1="0" y1="12" x2="85" y2="12" stroke="#c9a96e" stroke-width="1"/>
+                        <!-- Left Loop -->
+                        <path d="M85 12 C 90 7, 100 7, 105 12 C 100 17, 90 17, 85 12 Z" fill="none" stroke="#c9a96e" stroke-width="1"/>
+                        <!-- Center Knot -->
+                        <path d="M105 12 C 110 6, 130 6, 135 12 C 130 18, 110 18, 105 12 Z" fill="none" stroke="#c9a96e" stroke-width="1"/>
+                        <circle cx="120" cy="12" r="2.5" fill="none" stroke="#c9a96e" stroke-width="1"/>
+                        <path d="M120 14.5 C 116 21, 124 21, 120 14.5 Z" fill="none" stroke="#c9a96e" stroke-width="1"/>
+                        <!-- Right Loop -->
+                        <path d="M135 12 C 140 7, 150 7, 155 12 C 150 17, 140 17, 135 12 Z" fill="none" stroke="#c9a96e" stroke-width="1"/>
+                        <!-- Right Line -->
+                        <line x1="155" y1="12" x2="240" y2="12" stroke="#c9a96e" stroke-width="1"/>
                     </svg>
                 </div>
                 <?php endif; ?>
