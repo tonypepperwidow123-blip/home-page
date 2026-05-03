@@ -89,20 +89,19 @@
 .vesara-footer-brand {}
 
 .vesara-footer-logo-wrap {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
+    display: block;
+    margin-bottom: 14px;
 }
 
 .vesara-footer-logo-img {
-    width: 36px;
-    height: 36px;
+    display: block;
+    width: 120px; /* default – overridden by Elementor Logo Width slider */
+    height: auto;
+    max-width: 100%;
     object-fit: contain;
-    border-radius: 50%;
-    background: rgba(201,169,97,0.15);
-    padding: 4px;
-    flex-shrink: 0;
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
 }
 
 .vesara-footer-logo-icon {
