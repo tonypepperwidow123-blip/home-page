@@ -48,7 +48,6 @@ class Footer_Widget extends Widget_Base {
         /* ── BRAND ── */
         $this->start_controls_section( 'sec_brand', [ 'label' => __( 'Logo & Brand', 'vesara-elementor-addon' ), 'tab' => Controls_Manager::TAB_CONTENT ] );
         $this->add_control( 'footer_logo',     [ 'label' => __( 'Logo Image', 'vesara-elementor-addon' ),    'type' => Controls_Manager::MEDIA ] );
-        $this->add_control( 'footer_logo_txt', [ 'label' => __( 'Logo Text',  'vesara-elementor-addon' ),    'type' => Controls_Manager::TEXT,  'default' => 'VESARA' ] );
         $this->add_control( 'footer_tagline',  [ 'label' => __( 'Tagline',    'vesara-elementor-addon' ),    'type' => Controls_Manager::TEXTAREA, 'default' => __( 'Draped in heritage. Designed for elegance.', 'vesara-elementor-addon' ) ] );
 
         $sr = new Repeater();
@@ -107,6 +106,18 @@ class Footer_Widget extends Widget_Base {
         $this->add_control( 'link_color',  [ 'label' => __( 'Link Color',  'vesara-elementor-addon' ), 'type' => Controls_Manager::COLOR, 'default' => 'rgba(245,241,232,0.65)', 'selectors' => [ '{{WRAPPER}} .vesara-footer-link, {{WRAPPER}} .vesara-contact-text' => 'color:{{VALUE}};' ] ] );
         $this->add_control( 'link_hover',  [ 'label' => __( 'Link Hover',  'vesara-elementor-addon' ), 'type' => Controls_Manager::COLOR, 'default' => '#C9A961',               'selectors' => [ '{{WRAPPER}} .vesara-footer-link:hover, {{WRAPPER}} a.vesara-contact-text:hover' => 'color:{{VALUE}};' ] ] );
         $this->end_controls_section();
+
+        /* ── LOGO SIZE ── */
+        $this->start_controls_section( 'sec_logo_style', [ 'label' => __( 'Logo', 'vesara-elementor-addon' ), 'tab' => Controls_Manager::TAB_STYLE ] );
+        $this->add_responsive_control( 'logo_width', [
+            'label'      => __( 'Logo Width', 'vesara-elementor-addon' ),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => [ 'px', '%', 'vw' ],
+            'range'      => [ 'px' => [ 'min' => 20, 'max' => 400 ], '%' => [ 'min' => 5, 'max' => 100 ] ],
+            'default'    => [ 'unit' => 'px', 'size' => 120 ],
+            'selectors'  => [ '{{WRAPPER}} .vesara-footer-logo-img' => 'width:{{SIZE}}{{UNIT}}; height:auto;' ],
+        ] );
+        $this->end_controls_section();
     }
 
     protected function render(): void {
@@ -139,13 +150,8 @@ class Footer_Widget extends Widget_Base {
                 <div class="vesara-footer-brand">
                     <div class="vesara-footer-logo-wrap">
                         <?php if ( ! empty( $s['footer_logo']['url'] ) ) : ?>
-                            <img class="vesara-footer-logo-img" src="<?php echo esc_url( $s['footer_logo']['url'] ); ?>" alt="<?php echo esc_attr( $s['footer_logo_txt'] ); ?>">
-                        <?php else : ?>
-                            <div class="vesara-footer-logo-icon" aria-hidden="true">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="#C9A961"><circle cx="12" cy="12" r="10" fill="none" stroke="#C9A961" stroke-width="1.5"/><path d="M12 6c-2 2-4 3-4 5s2 4 4 5c2-1 4-3 4-5s-2-3-4-5z"/></svg>
-                            </div>
+                            <img class="vesara-footer-logo-img" src="<?php echo esc_url( $s['footer_logo']['url'] ); ?>" alt="Vesara logo">
                         <?php endif; ?>
-                        <span class="vesara-footer-logo-name"><?php echo esc_html( $s['footer_logo_txt'] ); ?></span>
                     </div>
 
                     <?php if ( ! empty( $s['footer_tagline'] ) ) : ?>
@@ -261,8 +267,7 @@ class Footer_Widget extends Widget_Base {
             <div class="vesara-footer-body">
                 <div class="vesara-footer-brand">
                     <div class="vesara-footer-logo-wrap">
-                        <# if(s.footer_logo&&s.footer_logo.url){#><img class="vesara-footer-logo-img" src="{{ s.footer_logo.url }}" alt="{{ s.footer_logo_txt }}"><#}else{#><div class="vesara-footer-logo-icon">V</div><#}#>
-                        <span class="vesara-footer-logo-name">{{ s.footer_logo_txt }}</span>
+                        <# if(s.footer_logo&&s.footer_logo.url){#><img class="vesara-footer-logo-img" src="{{ s.footer_logo.url }}" alt="Vesara logo"><#}#>
                     </div>
                     <# if(s.footer_tagline){#><p class="vesara-footer-tagline">{{ s.footer_tagline }}</p><#}#>
                     <div class="vesara-footer-socials">
