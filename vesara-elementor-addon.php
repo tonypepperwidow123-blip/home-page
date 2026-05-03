@@ -3,7 +3,7 @@
  * Plugin Name: VESARA Elementor Widgets
  * Plugin URI:  https://vesara.com
  * Description: Premium Elementor widgets for VESARA luxury saree brand — Hero Banner, Shop by Category, New Arrivals, Feature Highlights, Testimonials, and Footer.
- * Version:     1.0.1
+ * Version:     1.0.2
  * Author:      VESARA
  * Text Domain: vesara-elementor-addon
  * Domain Path: /languages
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-define( 'VESARA_EA_VERSION',  '1.0.1' );
+define( 'VESARA_EA_VERSION',  '1.0.2' );
 define( 'VESARA_EA_PATH',     plugin_dir_path( __FILE__ ) );
 define( 'VESARA_EA_URL',      plugin_dir_url( __FILE__ ) );
 define( 'VESARA_EA_BASENAME', plugin_basename( __FILE__ ) );

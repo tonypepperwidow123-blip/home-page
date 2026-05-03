@@ -89,19 +89,26 @@
 .vesara-footer-brand {}
 
 .vesara-footer-logo-wrap {
-    display: block;
+    display: block !important;
     margin-bottom: 14px;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
 }
 
 .vesara-footer-logo-img {
-    display: block;
+    display: block !important;
     width: 120px; /* default – overridden by Elementor Logo Width slider */
-    height: auto;
-    max-width: 100%;
-    object-fit: contain;
-    background: transparent;
-    border-radius: 0;
-    padding: 0;
+    height: auto !important;
+    max-width: 100% !important;
+    object-fit: contain !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    border-radius: 0 !important;
+    border: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
 }
 
 .vesara-footer-logo-icon {
